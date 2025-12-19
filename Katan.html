@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIDA MÍA</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: hsl(232, 73%, 81%); 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+    
+        .container {
+            position: relative;
+            z-index: ;
+            width: 90vw;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+        }
+
+.title {
+            color: lab(43.31% 11.77 -43.75);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        #loveBtn {
+            background-color: lab(50.62% 23.04 -52.75 / 0.916);
+            border: none;
+            border-radius: 50%; 
+            width: 100px;
+            height: 100px;
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: absolute;
+            bottom: 20px;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        #loveBtn:hover {
+            transform: scale(1.1);
+        }
+
+    
+        .phrase {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            background: rgba(115, 160, 227, 0.85);
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #a674cae6;
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            animation: floatUp 4s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translate(-50%, 0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -200px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1 class="title">Te amo porque no necesito razones para hacerlo, pero las tengo.</h1>
+
+        <button id="loveBtn" aria-label="Botón de amor">🖤</button>
+        <div id="messages-container"></div>
+    </div>
+
+    <script>
+        const phrasesOriginal = [
+            "Tienes mi cuerpo entero sin esfuerzo.",
+            "Basta una mirada para quedar encantada.",
+            "Contigo el silencio también se siente bonito.",
+            "No me importa el mundo, solo tú.",
+            "Eres mi persona favorita.",
+            "Cada día me gustas más.",
+            "Mi vida se resume a ti.",
+            "Siempre vas a ser tú",
+            "Eres mi olor favorito.",
+            "Tu sonrisa ilumina mi mundo.",
+            "Lastimaria a cualquiera para protegerte.",
+            "Lo malo de soñarte es cuando despierto y no estas.",
+            "Eres fuerte, pero también muy dulce.",
+            "No necesitas ser ruidoso para ser increíble.",
+            "Mis manos siempre buscaran las tuyas.",
+            "Incluso estando lejos te siento cerca.",
+            "No me canso de mirarte.",
+            "Tu presencia ilumina el lugar.",
+            "Odio cuando te vas.",
+            "Eres lo que nunca busque y siempre necesité.",
+            "Eres mi sueño favorito",
+            "Tu risa es contagiosa.",
+            "Eres increíble.",
+            "Eres único."
+        ];
+
+        const btn = document.getElementById('loveBtn');
+        const container = document.getElementById('messages-container');
+
+        btn.addEventListener('click', () => {
+            const phraseElement = document.createElement('div');
+            phraseElement.classList.add('phrase');
+
+            const randomIndex = Math.floor(Math.random() * phrasesOriginal.length);
+            phraseElement.innerText = phrasesOriginal[randomIndex];
+
+            const randomX = Math.random() * window.innerWidth;
+const randomY = Math.random() * window.innerHeight;
+
+phraseElement.style.left = `${randomX}px`;
+phraseElement.style.top = `${randomY}px`;
+phraseElement.style.transform = 'translate(-50%, -50%)';
+            container.appendChild(phraseElement);
+
+            setTimeout(() => {
+                phraseElement.remove();
+            }, 4000);
+        });
+    </script>
+
+</body>
+</html>
